@@ -1,0 +1,13 @@
+jobs:
+ download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact from previous workflow
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Check files
+        run: ls
